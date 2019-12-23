@@ -42,7 +42,7 @@ def digit_selector_coroutine(average_calculator, window_size=3):
             window.append(int(raw_data))
             average_calculator.send(window)
         else:
-            print('not digit\n')
+            print('{} is not digit\n'.format(raw_data))
 
 @coroutine_primer
 def average_calculator_coroutine():
@@ -50,7 +50,7 @@ def average_calculator_coroutine():
 
     while True:
         window = (yield)
-        print("current window = {}, mean = {}\n".format(window, statistics.mean(window)))
+        print("current window = {}, mean = {:.3f}\n".format(list(window), statistics.mean(window)))
 
 
 if __name__  == "__main__":
